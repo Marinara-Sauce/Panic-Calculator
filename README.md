@@ -1,2 +1,2 @@
 # PanicCalculator
- Panic Calculator app for HackIllinois
+Panic Calculator app for HackIllinois
