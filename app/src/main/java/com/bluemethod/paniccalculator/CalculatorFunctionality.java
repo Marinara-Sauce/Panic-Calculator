@@ -124,6 +124,7 @@ public class CalculatorFunctionality{
             evalLine();
         }
         else{
+            setDisplay(getDisplay() + " ");
             setDisplay(getDisplay() + j);
             setSign(j);
             if(sign == "%"){
