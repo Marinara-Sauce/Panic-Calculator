@@ -74,12 +74,17 @@ public class SOS extends AppCompatActivity {
         Set<String> numbers = sp.getStringSet(PHONE_NUMBER_PREF, null);
 
         if (name == null || message == null || numbers == null)
+        {
+            name = "Jimmy";
+            message = "needs healing";
             //TODO: Run setup
-            return;
+        }
 
         //Parse the phone number array
-        for (int i = 0 ; i < numbers.size() ; i++)
-            phoneNumbers.add((String) numbers.toArray()[i]);
+        //for (int i = 0 ; i < numbers.size() ; i++)
+        //     phoneNumbers.add((String) numbers.toArray()[i]);
+
+        phoneNumbers.add("+14015730020");
     }
 
     public void sendSMS()
