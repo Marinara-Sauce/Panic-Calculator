@@ -146,10 +146,11 @@
                 android:gravity="center_horizontal">
 
                 <Button
+                    android:id="@+id/bFourButton"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:background="@drawable/button_background"
 
+                    android:background="@drawable/button_background"
                     android:text="@string/_4"
                     android:textColor="#686868"
                     android:textSize="30sp"
