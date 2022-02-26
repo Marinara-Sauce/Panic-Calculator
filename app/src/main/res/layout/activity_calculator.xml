@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/space"
+        app:layout_constraintBottom_toTopOf="@+id/space5"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="1dp">
 
@@ -35,7 +35,7 @@
                 android:layout_weight="1"
                 android:gravity="center_horizontal">
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/bClearButton"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -47,7 +47,7 @@
                     android:textSize="30sp"
                     android:translationX="-15dp" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
 
                     android:id="@+id/nSquareRootButton"
 
@@ -60,7 +60,7 @@
                     android:textSize="30sp"
                     android:translationX="-5dp" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/bPercentButton"
 
                     android:layout_width="80dp"
@@ -72,7 +72,7 @@
                     android:textSize="30sp"
                     android:translationX="5dp" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/bDivideButton"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -86,13 +86,20 @@
 
             </TableRow>
 
+            <Space
+                android:id="@+id/space1"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:layout_editor_absoluteX="1dp" />
+
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal">
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/bSevenButton"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -103,7 +110,7 @@
                     android:textSize="30sp"
                     android:translationX="-15dp" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/bEightButton"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -114,7 +121,7 @@
                     android:textSize="30sp"
                     android:translationX="-5dp" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/bNineButton"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -125,7 +132,7 @@
                     android:textSize="30sp"
                     android:translationX="5dp" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/bTimesButton"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -139,13 +146,20 @@
 
             </TableRow>
 
+            <Space
+                android:id="@+id/space2"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:layout_editor_absoluteX="1dp" />
+
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal">
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/bFourButton"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -156,7 +170,7 @@
                     android:textSize="30sp"
                     android:translationX="-15dp" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/bFiveButton"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -167,7 +181,7 @@
                     android:textSize="30sp"
                     android:translationX="-5dp" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/bSixButton"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -178,7 +192,7 @@
                     android:textSize="30sp"
                     android:translationX="5dp" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/bMinusButton"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -191,13 +205,20 @@
 
             </TableRow>
 
+            <Space
+                android:id="@+id/space3"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:layout_editor_absoluteX="1dp" />
+
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal">
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
 
                     android:id="@+id/bOneButton"
 
@@ -210,7 +231,7 @@
                     android:textSize="30sp"
                     android:translationX="-15dp" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/bTwoButton"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -221,7 +242,7 @@
                     android:textSize="30sp"
                     android:translationX="-5dp" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/bThreeButton"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -232,7 +253,7 @@
                     android:textSize="30sp"
                     android:translationX="5dp" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/bPlusButton"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -246,13 +267,20 @@
 
             </TableRow>
 
+            <Space
+                android:id="@+id/space4"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:layout_editor_absoluteX="1dp" />
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0"
                 android:gravity="center_horizontal">
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
 
                     android:id="@+id/bNegativeButton"
 
@@ -265,7 +293,7 @@
                     android:textSize="30sp"
                     android:translationX="-15dp" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/bZeroButton"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -276,7 +304,7 @@
                     android:textSize="30sp"
                     android:translationX="-5dp" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
 
                     android:id="@+id/nDecimalButton"
 
@@ -289,7 +317,7 @@
                     android:textSize="30sp"
                     android:translationX="5dp" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/bEqualsButton"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -308,7 +336,7 @@
     </LinearLayout>
 
     <Space
-        android:id="@+id/space"
+        android:id="@+id/space5"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
