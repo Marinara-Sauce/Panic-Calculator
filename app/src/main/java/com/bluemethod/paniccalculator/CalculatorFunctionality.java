@@ -86,6 +86,9 @@ public class CalculatorFunctionality{
     }
 
     public Double convString(String n){
+        if (n.isEmpty())
+            return 0.0;
+
         Double dnum = Double.parseDouble(n);
         return dnum;
     }
