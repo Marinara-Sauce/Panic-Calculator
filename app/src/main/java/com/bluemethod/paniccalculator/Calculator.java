@@ -220,6 +220,10 @@ public class Calculator extends AppCompatActivity {
     private void sendSOS(View view)
     {
         //TODO: Dispatch SOS Signal
+
+        SOS sos = new SOS();
+        sos.sendSMS();
+
         Snackbar.make(view, "SOS Activated!! Wee Wooo Wee Woo", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();
     }
