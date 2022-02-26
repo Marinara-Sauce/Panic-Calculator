@@ -28,6 +28,9 @@ public class Calculator extends AppCompatActivity {
     private boolean equalsTapped = false;
     Timer equalsTimer;
 
+    //SOS Class
+    private final SOS sos = new SOS();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,26 +44,26 @@ public class Calculator extends AppCompatActivity {
         TextView equationDisplay = (TextView) findViewById(R.id.equationDisplay);
 
         //The number buttons
-        Button oneButton = (Button) findViewById(R.id.bOneButton);
-        Button twoButton = (Button) findViewById(R.id.bTwoButton);
-        Button threeButton = (Button) findViewById(R.id.bThreeButton);
-        Button fourButton = (Button) findViewById(R.id.bFourButton);
-        Button fiveButton = (Button) findViewById(R.id.bFiveButton);
-        Button sixButton = (Button) findViewById(R.id.bSixButton);
-        Button sevenButton = (Button) findViewById(R.id.bSevenButton);
-        Button eightButton = (Button) findViewById(R.id.bEightButton);
-        Button nineButton = (Button) findViewById(R.id.bNineButton);
-        Button zeroButton = (Button) findViewById(R.id.bZeroButton);
+        Button oneButton = findViewById(R.id.bOneButton);
+        Button twoButton = findViewById(R.id.bTwoButton);
+        Button threeButton = findViewById(R.id.bThreeButton);
+        Button fourButton = findViewById(R.id.bFourButton);
+        Button fiveButton = findViewById(R.id.bFiveButton);
+        Button sixButton = findViewById(R.id.bSixButton);
+        Button sevenButton = findViewById(R.id.bSevenButton);
+        Button eightButton = findViewById(R.id.bEightButton);
+        Button nineButton = findViewById(R.id.bNineButton);
+        Button zeroButton = findViewById(R.id.bZeroButton);
 
         //Operation Buttons
-        Button plusButton = (Button) findViewById(R.id.bPlusButton);
-        Button minusButton = (Button) findViewById(R.id.bMinusButton);
-        Button timesButton = (Button) findViewById(R.id.bTimesButton);
-        Button divideButton = (Button) findViewById(R.id.bDivideButton);
-        Button equalsButton = (Button) findViewById(R.id.bEqualsButton);
+        Button plusButton = findViewById(R.id.bPlusButton);
+        Button minusButton = findViewById(R.id.bMinusButton);
+        Button timesButton = findViewById(R.id.bTimesButton);
+        Button divideButton = findViewById(R.id.bDivideButton);
+        Button equalsButton = findViewById(R.id.bEqualsButton);
 
         //Clear Button
-        Button clearButton = (Button) findViewById(R.id.bClearButton);
+        Button clearButton = findViewById(R.id.bClearButton);
 
         //---- ON CLICK LISTENERS ----//
 
@@ -176,7 +179,7 @@ public class Calculator extends AppCompatActivity {
 
                 //Deactivates the equals primer after .25 seconds
                 equalsTimer = new Timer();
-                equalsTimer.schedule(new RemindTask(), 250);
+                equalsTimer.schedule(new EqualsToggle(), 250);
 
                 //TODO: Solve the equation
             }
@@ -193,7 +196,7 @@ public class Calculator extends AppCompatActivity {
     /**
      * Class used to manage the double tapping for the equals button
      */
-    class RemindTask extends TimerTask
+    class EqualsToggle extends TimerTask
     {
         public void run()
         {
@@ -219,12 +222,6 @@ public class Calculator extends AppCompatActivity {
      */
     private void sendSOS(View view)
     {
-        //TODO: Dispatch SOS Signal
-
-        SOS sos = new SOS();
         sos.sendSMS();
-
-        Snackbar.make(view, "SOS Activated!! Wee Wooo Wee Woo", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
     }
 }
