@@ -56,19 +56,7 @@ public class SOS extends AppCompatActivity {
         this.coordinates = new Coordinates(context);
         phoneNumbers = new ArrayList<>();
 
-        //loadSettings();
-        loadDefaultSettings();
-    }
-
-    /**
-     * Temp function that loads the default settings
-     */
-    private void loadDefaultSettings()
-    {
-        name = "Jimmy";
-        message = "Needs help";
-        sendLocation = true;
-        phoneNumbers.add("+11234");
+        loadSettings();
     }
 
     /**
@@ -83,15 +71,15 @@ public class SOS extends AppCompatActivity {
         final String SEND_LOCATION_PREF = "sendLocation";
         final String PHONE_NUMBER_PREF = "phoneNumbers";
 
-        SharedPreferences sp = this.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
 
         //Begin settings variables
         name = sp.getString(USER_NAME_PREF, "Jim");
-        message = sp.getString(MESSAGE_PREF, "Help");
+        message = sp.getString(MESSAGE_PREF, "is in an unsafe situation and needs help");
         sendLocation = sp.getBoolean(SEND_LOCATION_PREF, true);
 
         Set<String> num = new ArraySet<>();
-        num.add("+14015730020");
+        num.add("+11234");
 
         Set<String> numbers = sp.getStringSet(PHONE_NUMBER_PREF, num);
 
@@ -114,7 +102,7 @@ public class SOS extends AppCompatActivity {
         //Construct the text message
         String textMessage = "--THIS IS JUST A TEST--\n\n";
 
-        textMessage = textMessage + name + message;
+        textMessage = textMessage + name + " " + message;
 
         if (sendLocation)
             textMessage = textMessage + "\n\n" + coordinates.getLocation();
@@ -123,6 +111,8 @@ public class SOS extends AppCompatActivity {
         SmsManager smsManager = SmsManager.getDefault();
         for (int i = 0 ; i < phoneNumbers.size() ; i++)
             smsManager.sendTextMessage(phoneNumbers.get(i), null, textMessage, null, null);
+
+        System.out.println("SOS Message dispatched");
     }
 
 }
