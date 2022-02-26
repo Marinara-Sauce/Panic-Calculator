@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -22,60 +23,79 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 /**
  * Handles SOS information, maintains contacts and settings
  */
 public class SOS extends AppCompatActivity {
 
-    private final FusedLocationProviderClient locationClient = LocationServices.getFusedLocationProviderClient(this);
-    private String recentLocationText;
+    //Class that can fetch the users location
+    private final Coordinates coordinates;
 
-    @SuppressLint("MissingPermissions")
-    public String getLocation() {
+    // --- Stored Settings --- //
 
-        if (checkPermission()) {
-            requestPermissions();
-            return "Location not found, permission denied";
-        }
+    private String name; //The users name
+    private String message; //The message to attach to the text
 
-        String locationText;
+    private boolean sendLocation; //Whether or not to send the coordinates in the text
 
-        locationClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
-            @Override
-            public void onComplete(@NonNull Task<Location> task) {
-                Location location = task.getResult();
-                if (location == null) {
-                    System.out.println("Uh oh");
-                    //TODO: Panic
-                } else {
-                    recentLocationText = "N°" + location.getLatitude() + " W°" + location.getLongitude();
-                }
-            }
-        });
+    private final List<String> phoneNumbers; //List of phone numbers to send alert to
 
-        locationText = recentLocationText;
-        recentLocationText = "";
+    public SOS()
+    {
+        this.coordinates = new Coordinates();
+        phoneNumbers = new ArrayList<>();
 
-        return locationText;
+        loadSettings();
     }
 
-    public boolean checkPermission()
+    /**
+     * Loads stored settings from the phone
+     */
+    private void loadSettings()
     {
-        return ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED;
-    }
+        final String PREFERENCE_NAME = "app-settings";
 
-    public void requestPermissions()
-    {
-        ActivityCompat.requestPermissions(this, new String[]{
-                Manifest.permission.ACCESS_COARSE_LOCATION,
-                Manifest.permission.ACCESS_FINE_LOCATION}, 44);
+        final String USER_NAME_PREF = "name";
+        final String MESSAGE_PREF = "message";
+        final String SEND_LOCATION_PREF = "sendLocation";
+        final String PHONE_NUMBER_PREF = "phoneNumbers";
+
+        SharedPreferences sp = getSharedPreferences(PREFERENCE_NAME, 0);
+
+        //Begin settings variables
+        name = sp.getString(USER_NAME_PREF, null);
+        message = sp.getString(MESSAGE_PREF, null);
+        sendLocation = sp.getBoolean(SEND_LOCATION_PREF, true);
+
+        Set<String> numbers = sp.getStringSet(PHONE_NUMBER_PREF, null);
+
+        if (name == null || message == null || numbers == null)
+            //TODO: Run setup
+            return;
+
+        //Parse the phone number array
+        for (int i = 0 ; i < numbers.size() ; i++)
+            phoneNumbers.add((String) numbers.toArray()[i]);
     }
 
     public void sendSMS()
     {
+        //Construct the text message
+        String textMessage = "--THIS IS JUST A TEST--\n\n";
+
+        textMessage = textMessage + name + message;
+
+        if (sendLocation)
+            textMessage = textMessage + "\n\n" + coordinates.getLocation();
+
+        //Sends the text message to contacts
         SmsManager smsManager = SmsManager.getDefault();
-        smsManager.sendTextMessage("+14015730020", null, getLocation(), null, null);
+        for (int i = 0 ; i < phoneNumbers.size() ; i++)
+            smsManager.sendTextMessage(phoneNumbers.get(i), null, textMessage, null, null);
     }
 
 }
