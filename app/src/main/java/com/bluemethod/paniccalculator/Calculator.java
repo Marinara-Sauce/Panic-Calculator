@@ -29,12 +29,14 @@ public class Calculator extends AppCompatActivity {
     Timer equalsTimer;
 
     //SOS Class
-    private final SOS sos = new SOS();
+    private SOS sos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
+
+        sos = new SOS(this.getApplicationContext());
 
         CalculatorFunctionality calculator = new CalculatorFunctionality();
 

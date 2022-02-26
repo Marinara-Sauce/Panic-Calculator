@@ -2,6 +2,8 @@ package com.bluemethod.paniccalculator;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Context;
 import android.content.pm.PackageManager;
 
 import androidx.annotation.NonNull;
@@ -18,10 +20,17 @@ import com.google.android.gms.tasks.Task;
  *
  * @author Daniel Bliss
  */
-public class Coordinates extends AppCompatActivity
+public class Coordinates extends Calculator
 {
-    private final FusedLocationProviderClient locationClient = LocationServices.getFusedLocationProviderClient(this);
+    private FusedLocationProviderClient locationClient;
     private String mostRecentLocation;
+
+    private final Context context;
+
+    public Coordinates(Context context)
+    {
+        this.context = context;
+    }
 
     /**
      * Fetches the user's exact coordinates
@@ -34,6 +43,8 @@ public class Coordinates extends AppCompatActivity
         if (checkPermission()) {
             requestPermissions();
         }
+
+         locationClient = LocationServices.getFusedLocationProviderClient(this);
 
         locationClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<android.location.Location>() {
             @Override
@@ -58,8 +69,8 @@ public class Coordinates extends AppCompatActivity
      */
     public boolean checkPermission()
     {
-        return ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED;
+        return ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED;
     }
 
     /**
@@ -67,7 +78,7 @@ public class Coordinates extends AppCompatActivity
      */
     public void requestPermissions()
     {
-        ActivityCompat.requestPermissions(this, new String[]{
+        ActivityCompat.requestPermissions((Activity) context, new String[]{
                 Manifest.permission.ACCESS_COARSE_LOCATION,
                 Manifest.permission.ACCESS_FINE_LOCATION}, 44);
     }
