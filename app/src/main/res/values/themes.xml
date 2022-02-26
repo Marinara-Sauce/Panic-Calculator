@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.PanicCalculator" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#DCDCAF</item>
+        <item name="colorPrimary">#66AA22</item>
         <item name="colorPrimaryVariant">#EEEEFF</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->

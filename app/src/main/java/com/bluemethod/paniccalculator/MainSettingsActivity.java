@@ -33,7 +33,11 @@ public class MainSettingsActivity extends AppCompatActivity {
     public static final String USER_NAME_PREF = "name";
     public static final String MESSAGE_PREF = "message";
     public static final String SEND_LOCATION_PREF = "sendLocation";
-    public static final String PHONE_NUMBER_PREF = "phoneNumbers";
+    public static final String PHONE_NUMBER_PREF1 = "phoneNumbers1";
+    public static final String PHONE_NUMBER_PREF2 = "phoneNumbers2";
+    public static final String PHONE_NUMBER_PREF3 = "phoneNumbers3";
+    public static final String PHONE_NUMBER_PREF4 = "phoneNumbers4";
+    public static final String PHONE_NUMBER_PREF5 = "phoneNumbers5";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,13 +108,66 @@ public class MainSettingsActivity extends AppCompatActivity {
                 }
             });
 
+            // -- Add phone numbers -- //
+
+            EditTextPreference number1 = (EditTextPreference) findPreference("contact1");
+            assert number1 != null;
+            number1.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    modifyPreference(MainSettingsActivity.PHONE_NUMBER_PREF1, (String) newValue);
+                    return true;
+                }
+            });
+
+            EditTextPreference number2 = (EditTextPreference) findPreference("contact2");
+            assert number2 != null;
+            number2.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    modifyPreference(MainSettingsActivity.PHONE_NUMBER_PREF2, (String) newValue);
+                    return true;
+                }
+            });
+
+            EditTextPreference number3 = (EditTextPreference) findPreference("contact3");
+            assert number3 != null;
+            number3.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    modifyPreference(MainSettingsActivity.PHONE_NUMBER_PREF3, (String) newValue);
+                    return true;
+                }
+            });
+
+            EditTextPreference number4 = (EditTextPreference) findPreference("contact4");
+            assert number4 != null;
+            number4.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    modifyPreference(MainSettingsActivity.PHONE_NUMBER_PREF4, (String) newValue);
+                    return true;
+                }
+            });
+
+            EditTextPreference number5 = (EditTextPreference) findPreference("contact5");
+            assert number5 != null;
+            number5.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    modifyPreference(MainSettingsActivity.PHONE_NUMBER_PREF5, (String) newValue);
+                    return true;
+                }
+            });
+
             return view;
         }
 
         private void modifyPreference(String key, String value)
         {
             System.out.print("Writing " + value + " to " + key + "...");
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+            //SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+            SharedPreferences sharedPreferences = getContext().getSharedPreferences(MainSettingsActivity.PREFERENCE_NAME, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString(key, value);
             editor.apply();
