@@ -9,13 +9,16 @@
     <TextView
         android:id="@+id/equationDisplay"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="[EQUATION-GOES-HERE]"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="right"
+        android:text="|"
         android:textColor="#689F38"
-        android:textSize="24sp"
-        tools:ignore="TextContrastCheck"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="77dp" />
+        android:textSize="50sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextContrastCheck" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -40,6 +43,7 @@
                 android:text="@string/clear"
                 android:textColor="#FF6868"
                 android:textSize="30sp"
+                android:translationX="-15dp"
                 tools:ignore="TextContrastCheck,TextContrastCheck" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -53,18 +57,20 @@
                 android:text="@string/squareRoot"
                 android:textColor="#66AA22"
                 android:textSize="30sp"
+                android:translationX="-5dp"
                 tools:ignore="TextContrastCheck,TextContrastCheck" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bPercentButton"
 
-                android:layout_width="77dp"
+                android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:background="@drawable/button_background"
 
                 android:text="@string/percent"
                 android:textColor="#66AA22"
                 android:textSize="30sp"
+                android:translationX="5dp"
                 tools:ignore="TextContrastCheck,TextContrastCheck" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -76,6 +82,7 @@
                 android:text="@string/divide"
                 android:textColor="#66AA22"
                 android:textSize="30sp"
+                android:translationX="15dp"
                 tools:ignore="TextContrastCheck" />
 
 
@@ -99,48 +106,50 @@
             android:gravity="center_horizontal">
 
             <androidx.appcompat.widget.AppCompatButton
-
-                android:id="@+id/bOneButton"
-
-                android:layout_width="77dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/button_background"
-
-                android:text="@string/_1"
-                android:textColor="#686868"
-                android:textSize="30sp" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/bTwoButton"
+                android:id="@+id/bSevenButton"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:background="@drawable/button_background"
 
-                android:text="@string/_2"
+                android:text="@string/_7"
                 android:textColor="#686868"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:translationX="-15dp" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/bThreeButton"
+                android:id="@+id/bEightButton"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:background="@drawable/button_background"
 
-                android:text="@string/_3"
+                android:text="@string/_8"
                 android:textColor="#686868"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:translationX="-5dp" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/bPlusButton"
+                android:id="@+id/bNineButton"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:background="@drawable/button_background"
 
-                android:text="@string/add"
+                android:text="@string/_9"
+                android:textColor="#686868"
+                android:textSize="30sp"
+                android:translationX="5dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bTimesButton"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+
+                android:background="@drawable/button_background"
+
+                android:text="@string/multiply"
                 android:textColor="#66AA22"
                 android:textSize="30sp"
+                android:translationX="15dp"
                 tools:ignore="TextContrastCheck" />
-
 
         </TableRow>
 
@@ -169,7 +178,8 @@
                 android:background="@drawable/button_background"
                 android:text="@string/_4"
                 android:textColor="#686868"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:translationX="-15dp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bFiveButton"
@@ -179,7 +189,8 @@
 
                 android:text="@string/_5"
                 android:textColor="#686868"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:translationX="-5dp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bSixButton"
@@ -189,7 +200,8 @@
 
                 android:text="@string/_6"
                 android:textColor="#686868"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:translationX="5dp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bMinusButton"
@@ -200,6 +212,7 @@
                 android:text="@string/subtract"
                 android:textColor="#66AA22"
                 android:textSize="30sp"
+                android:translationX="15dp"
                 tools:ignore="TextContrastCheck" />
 
         </TableRow>
@@ -217,55 +230,61 @@
 
         </TableRow>
 
-
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/bSevenButton"
+
+                android:id="@+id/bOneButton"
+
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:background="@drawable/button_background"
 
-                android:text="@string/_7"
+                android:text="@string/_1"
                 android:textColor="#686868"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:translationX="-15dp" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/bEightButton"
+                android:id="@+id/bTwoButton"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:background="@drawable/button_background"
 
-                android:text="@string/_8"
+                android:text="@string/_2"
                 android:textColor="#686868"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:translationX="-5dp" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/bNineButton"
+                android:id="@+id/bThreeButton"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:background="@drawable/button_background"
 
-                android:text="@string/_9"
+                android:text="@string/_3"
                 android:textColor="#686868"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:translationX="5dp" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/bTimesButton"
+                android:id="@+id/bPlusButton"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-
                 android:background="@drawable/button_background"
 
-                android:text="@string/multiply"
+                android:text="@string/add"
                 android:textColor="#66AA22"
                 android:textSize="30sp"
+                android:translationX="15dp"
                 tools:ignore="TextContrastCheck" />
 
+
         </TableRow>
+
 
         <TableRow
             android:layout_width="match_parent"
@@ -296,7 +315,8 @@
 
                 android:text="@string/negative"
                 android:textColor="#686868"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:translationX="-15dp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bZeroButton"
@@ -306,7 +326,8 @@
 
                 android:text="@string/_0"
                 android:textColor="#686868"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:translationX="-5dp" />
 
             <androidx.appcompat.widget.AppCompatButton
 
@@ -319,6 +340,7 @@
                 android:text="@string/decimal"
                 android:textColor="#686868"
                 android:textSize="30sp"
+                android:translationX="5dp"
                 tools:ignore="TextContrastCheck" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -330,6 +352,7 @@
                 android:text="@string/equals"
                 android:textColor="#EEEEEE"
                 android:textSize="30sp"
+                android:translationX="15dp"
                 tools:ignore="TextContrastCheck" />
 
 

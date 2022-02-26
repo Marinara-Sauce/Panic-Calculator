@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Calculator">
+
+    <TextView
+        android:id="@+id/equationDisplay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="64dp"
+        android:gravity="right"
+        android:text="|"
+        android:textColor="#689F38"
+        android:textSize="50sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextContrastCheck" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/space5"
+        app:layout_constraintStart_toStartOf="@+id/equationDisplay"
+        tools:ignore="MissingConstraints">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Space
+                android:id="@+id/space2"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:layout_editor_absoluteX="1dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bClearButton"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@drawable/button_horizantal_background"
+
+                android:text="@string/clear"
+                android:textColor="#FF6868"
+                android:textSize="30sp"
+                android:translationX="-25dp"
+                tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+            <androidx.appcompat.widget.AppCompatButton
+
+                android:id="@+id/bOneButton"
+
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@drawable/button_horizantal_background"
+
+                android:text="@string/_1"
+                android:textColor="#686868"
+                android:textSize="30sp"
+                android:translationX="-15dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bTwoButton"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@drawable/button_horizantal_background"
+
+                android:text="@string/_2"
+                android:textColor="#686868"
+                android:textSize="30sp"
+                android:translationX="-5dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bThreeButton"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@drawable/button_horizantal_background"
+
+                android:text="@string/_3"
+                android:textColor="#686868"
+                android:textSize="30sp"
+                android:translationX="5dp" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bPlusButton"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@drawable/button_horizantal_background"
+
+                android:text="@string/add"
+                android:textColor="#66AA22"
+                android:textSize="30sp"
+                android:translationX="15dp"
+                tools:ignore="TextContrastCheck" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bMinusButton"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@drawable/button_horizantal_background"
+
+                android:text="@string/subtract"
+                android:textColor="#66AA22"
+                android:textSize="30sp"
+                android:translationX="25dp"
+                tools:ignore="TextContrastCheck" />
+
+            <androidx.appcompat.widget.AppCompatButton
+
+                android:id="@+id/nSquareRootButton"
+
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@drawable/button_horizantal_background"
+
+                android:text="@string/squareRoot"
+                android:textColor="#66AA22"
+                android:textSize="30sp"
+                android:translationX="35dp"
+                tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Space
+                android:id="@+id/space1"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:layout_editor_absoluteX="1dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+
+                android:id="@+id/bNegativeButton"
+
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@drawable/button_horizantal_background"
+
+                android:text="@string/negative"
+                android:textColor="#686868"
+                android:textSize="30sp"
+                android:translationX="-25dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bFourButton"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@drawable/button_horizantal_background"
+
+                android:text="@string/_4"
+                android:textColor="#686868"
+                android:textSize="30sp"
+                android:translationX="-15dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bFiveButton"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@drawable/button_horizantal_background"
+
+                android:text="@string/_5"
+                android:textColor="#686868"
+                android:textSize="30sp"
+                android:translationX="-5dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bSixButton"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@drawable/button_horizantal_background"
+
+                android:text="@string/_6"
+                android:textColor="#686868"
+                android:textSize="30sp"
+                android:translationX="5dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bTimesButton"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@drawable/button_horizantal_background"
+
+                android:text="@string/multiply"
+                android:textColor="#66AA22"
+                android:textSize="30sp"
+                android:translationX="15dp"
+                tools:ignore="TextContrastCheck" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bDivideButton"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@drawable/button_horizantal_background"
+
+                android:text="@string/divide"
+                android:textColor="#66AA22"
+                android:textSize="30sp"
+                android:translationX="25dp"
+                tools:ignore="TextContrastCheck" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bPercentButton"
+
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@drawable/button_horizantal_background"
+
+                android:text="@string/percent"
+                android:textColor="#66AA22"
+                android:textSize="30sp"
+                android:translationX="35dp"
+                tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Space
+                android:id="@+id/space4"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:layout_editor_absoluteX="1dp" />
+
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bZeroButton"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@drawable/button_horizantal_background"
+
+                android:text="@string/_0"
+                android:textColor="#686868"
+                android:textSize="30sp"
+                android:translationX="-25dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bSevenButton"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@drawable/button_horizantal_background"
+
+                android:text="@string/_7"
+                android:textColor="#686868"
+                android:textSize="30sp"
+                android:translationX="-15dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bEightButton"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@drawable/button_horizantal_background"
+
+                android:text="@string/_8"
+                android:textColor="#686868"
+                android:textSize="30sp"
+                android:translationX="-5dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bNineButton"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@drawable/button_horizantal_background"
+
+                android:text="@string/_9"
+                android:textColor="#686868"
+                android:textSize="30sp"
+                android:translationX="5dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+
+                android:id="@+id/nDecimalButton"
+
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@drawable/button_horizantal_background"
+
+                android:text="@string/decimal"
+                android:textColor="#686868"
+                android:textSize="30sp"
+                android:translationX="15dp"
+                tools:ignore="TextContrastCheck" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bEqualsButton"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:background="@drawable/button_horizantal_background_alt"
+
+                android:text="Enter"
+                android:textColor="#EEEEEE"
+                android:textSize="30sp"
+                android:translationX="30dp"
+                tools:ignore="TextContrastCheck" />
+
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Space
+                android:id="@+id/space3"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:layout_editor_absoluteX="1dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            tools:layout_editor_absoluteX="88dp"
+            tools:layout_editor_absoluteY="796dp">
+
+
+        </TableRow>
+
+    </LinearLayout>
+
+    <Space
+        android:id="@+id/space5"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="1dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
