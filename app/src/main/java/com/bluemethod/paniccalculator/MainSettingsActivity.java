@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.renderscript.ScriptGroup;
+import android.text.InputType;
 import android.text.Layout;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -14,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.ActionMenuItem;
@@ -38,6 +41,8 @@ public class MainSettingsActivity extends AppCompatActivity {
     public static final String PHONE_NUMBER_PREF3 = "phoneNumbers3";
     public static final String PHONE_NUMBER_PREF4 = "phoneNumbers4";
     public static final String PHONE_NUMBER_PREF5 = "phoneNumbers5";
+    public static final String SOS_CODE_PREF = "sosCode";
+    public static final String SETTINGS_CODE_PREF = "settingsCode";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,6 +125,13 @@ public class MainSettingsActivity extends AppCompatActivity {
                 }
             });
 
+            number1.setOnBindEditTextListener(new EditTextPreference.OnBindEditTextListener() {
+                @Override
+                public void onBindEditText(@NonNull EditText editText) {
+                    editText.setInputType(InputType.TYPE_CLASS_PHONE);
+                }
+            });
+
             EditTextPreference number2 = (EditTextPreference) findPreference("contact2");
             assert number2 != null;
             number2.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
@@ -127,6 +139,13 @@ public class MainSettingsActivity extends AppCompatActivity {
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
                     modifyPreference(MainSettingsActivity.PHONE_NUMBER_PREF2, (String) newValue);
                     return true;
+                }
+            });
+
+            number2.setOnBindEditTextListener(new EditTextPreference.OnBindEditTextListener() {
+                @Override
+                public void onBindEditText(@NonNull EditText editText) {
+                    editText.setInputType(InputType.TYPE_CLASS_PHONE);
                 }
             });
 
@@ -140,6 +159,13 @@ public class MainSettingsActivity extends AppCompatActivity {
                 }
             });
 
+            number3.setOnBindEditTextListener(new EditTextPreference.OnBindEditTextListener() {
+                @Override
+                public void onBindEditText(@NonNull EditText editText) {
+                    editText.setInputType(InputType.TYPE_CLASS_PHONE);
+                }
+            });
+
             EditTextPreference number4 = (EditTextPreference) findPreference("contact4");
             assert number4 != null;
             number4.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
@@ -150,12 +176,60 @@ public class MainSettingsActivity extends AppCompatActivity {
                 }
             });
 
+            number4.setOnBindEditTextListener(new EditTextPreference.OnBindEditTextListener() {
+                @Override
+                public void onBindEditText(@NonNull EditText editText) {
+                    editText.setInputType(InputType.TYPE_CLASS_PHONE);
+                }
+            });
+
             EditTextPreference number5 = (EditTextPreference) findPreference("contact5");
             assert number5 != null;
             number5.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
                     modifyPreference(MainSettingsActivity.PHONE_NUMBER_PREF5, (String) newValue);
+                    return true;
+                }
+            });
+
+            number5.setOnBindEditTextListener(new EditTextPreference.OnBindEditTextListener() {
+                @Override
+                public void onBindEditText(@NonNull EditText editText) {
+                    editText.setInputType(InputType.TYPE_CLASS_PHONE);
+                }
+            });
+
+            EditTextPreference sosCode = (EditTextPreference) findPreference("sos_code");
+            assert sosCode != null;
+            sosCode.setOnBindEditTextListener(new EditTextPreference.OnBindEditTextListener() {
+                @Override
+                public void onBindEditText(@NonNull EditText editText) {
+                    editText.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_SIGNED);
+                }
+            });
+
+            sosCode.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    modifyPreference(MainSettingsActivity.SOS_CODE_PREF, (String) newValue);
+                    return true;
+                }
+            });
+
+            EditTextPreference settingsCode = (EditTextPreference) findPreference("settings_code");
+            assert settingsCode != null;
+            settingsCode.setOnBindEditTextListener(new EditTextPreference.OnBindEditTextListener() {
+                @Override
+                public void onBindEditText(@NonNull EditText editText) {
+                    editText.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_SIGNED);
+                }
+            });
+
+            settingsCode.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    modifyPreference(MainSettingsActivity.SETTINGS_CODE_PREF, (String) newValue);
                     return true;
                 }
             });

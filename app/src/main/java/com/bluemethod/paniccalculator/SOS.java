@@ -50,6 +50,9 @@ public class SOS extends AppCompatActivity {
 
     private final Context context;
 
+    private String code;
+    private String settingsCode;
+
     public SOS(Context context)
     {
         this.context = context;
@@ -73,16 +76,32 @@ public class SOS extends AppCompatActivity {
         message = sp.getString(MainSettingsActivity.MESSAGE_PREF, "is in an unsafe situation and needs help");
         sendLocation = sp.getBoolean(MainSettingsActivity.SEND_LOCATION_PREF, true);
 
+        phoneNumbers.clear();
+
         //Phone numbers
         phoneNumbers.add(sp.getString(MainSettingsActivity.PHONE_NUMBER_PREF1, null));
         phoneNumbers.add(sp.getString(MainSettingsActivity.PHONE_NUMBER_PREF2, null));
         phoneNumbers.add(sp.getString(MainSettingsActivity.PHONE_NUMBER_PREF3, null));
         phoneNumbers.add(sp.getString(MainSettingsActivity.PHONE_NUMBER_PREF4, null));
         phoneNumbers.add(sp.getString(MainSettingsActivity.PHONE_NUMBER_PREF5, null));
+
+        //Code
+        code = sp.getString(MainSettingsActivity.SOS_CODE_PREF, "5555");
+        settingsCode = sp.getString(MainSettingsActivity.SETTINGS_CODE_PREF, "1234");
     }
 
-    public void sendSMS()
+    public void sendSMS(String code)
     {
+        //Load any loose settings we may have missed
+        loadSettings();
+
+        //Check the code is correct
+        if (!code.equals(this.code))
+        {
+            System.out.println("Incorrect Code: Received - " + code + " Expected - " + this.code);
+            return;
+        }
+
         //Construct the text message
         String textMessage = "--THIS IS JUST A TEST-- ";
 
@@ -105,6 +124,16 @@ public class SOS extends AppCompatActivity {
         }
 
         System.out.println("SOS Message dispatched!");
+    }
+
+    public String getSettingsCode()
+    {
+        return settingsCode;
+    }
+
+    public String getSOSCode()
+    {
+        return code;
     }
 
 }
