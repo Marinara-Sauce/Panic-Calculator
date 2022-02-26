@@ -12,9 +12,11 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.telephony.SmsManager;
+import android.util.ArraySet;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -24,6 +26,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -67,11 +71,14 @@ public class SOS extends AppCompatActivity {
         SharedPreferences sp = getSharedPreferences(PREFERENCE_NAME, 0);
 
         //Begin settings variables
-        name = sp.getString(USER_NAME_PREF, null);
-        message = sp.getString(MESSAGE_PREF, null);
+        name = sp.getString(USER_NAME_PREF, "Jim");
+        message = sp.getString(MESSAGE_PREF, "Help");
         sendLocation = sp.getBoolean(SEND_LOCATION_PREF, true);
 
-        Set<String> numbers = sp.getStringSet(PHONE_NUMBER_PREF, null);
+        Set<String> num = new ArraySet<>();
+        num.add("+14015730020");
+
+        Set<String> numbers = sp.getStringSet(PHONE_NUMBER_PREF, num);
 
         if (name == null || message == null || numbers == null)
         {
