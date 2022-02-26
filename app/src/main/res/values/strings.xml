@@ -24,6 +24,7 @@
 
     <!-- Preference Titles -->
     <string name="messages_header">Alert Message</string>
+    <string name="code_header">Secret Codes</string>
     <string name="contacts_header">Contacts</string>
 
     <!-- Messages Preferences -->
@@ -32,6 +33,10 @@
 
     <!-- Coordinate Preferences Preferences -->
     <string name="attach_coords">Attach Coordinates to Message</string>
+
+    <!-- Code Preferences -->
+    <string name="sos_code_title">SOS Code</string>
+    <string name="settings_code_title">Settings Code</string>
 
     <!-- Emergency Contact Header -->
     <string name="contact1">Emergency Contact 1</string>

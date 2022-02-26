@@ -1,4 +1,20 @@
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory app:title="@string/code_header">
+        <EditTextPreference
+            app:key="sos_code"
+            app:defaultValue="5555"
+            app:title="@string/sos_code_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            app:key="settings_code"
+            app:defaultValue="1234"
+            app:title="@string/settings_code_title"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
 
     <PreferenceCategory app:title="@string/messages_header">
 

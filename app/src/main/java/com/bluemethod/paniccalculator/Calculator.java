@@ -3,7 +3,9 @@ package com.bluemethod.paniccalculator;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,8 +25,6 @@ import java.util.TimerTask;
  * @author Sam Wyss-Duhammel
  */
 public class Calculator extends AppCompatActivity {
-
-    //TODO: Modify the UI in activity_calculator.xml
 
     //Used for triggering the SOS, is set to false after .25 seconds of being hit
     private boolean equalsTapped = false;
@@ -162,7 +162,7 @@ public class Calculator extends AppCompatActivity {
         plusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (calculator.getDisplay().equals("1234")) startSettingsActivity();
+                if (calculator.getDisplay().equals(sos.getSettingsCode())) startSettingsActivity();
 
                 calculator.addSign("+");
                 updateDisplay(equationDisplay, calculator);
@@ -220,20 +220,23 @@ public class Calculator extends AppCompatActivity {
         equalsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calculator.addSign("=");
-                updateDisplay(equationDisplay, calculator);
-
                 //Not only should this solve, but we should also check for double presses
                 //and dispatch the SOS
 
                 if (equalsTapped)
-                    sendSOS(view);
+                    sendSOS(view, calculator.getDisplay());
 
                 equalsTapped = true;
 
                 //Deactivates the equals primer after .25 seconds
                 equalsTimer = new Timer();
                 equalsTimer.schedule(new EqualsToggle(), 250);
+
+                if (!calculator.getDisplay().equals(sos.getSOSCode()))
+                {
+                    calculator.addSign("=");
+                    updateDisplay(equationDisplay, calculator);
+                }
             }
         });
 
@@ -277,10 +280,10 @@ public class Calculator extends AppCompatActivity {
     /**
      * Sends an SOS Signal
      *
-     * @param view temp param for the SOS placeholder
+     * @param code the current entered code
      */
-    private void sendSOS(View view)
+    private void sendSOS(View view, String code)
     {
-        sos.sendSMS();
+        sos.sendSMS(code);
     }
 }
