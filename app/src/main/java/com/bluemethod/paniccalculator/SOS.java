@@ -48,12 +48,27 @@ public class SOS extends AppCompatActivity {
 
     private final List<String> phoneNumbers; //List of phone numbers to send alert to
 
-    public SOS()
+    private final Context context;
+
+    public SOS(Context context)
     {
-        this.coordinates = new Coordinates();
+        this.context = context;
+        this.coordinates = new Coordinates(context);
         phoneNumbers = new ArrayList<>();
 
-        loadSettings();
+        //loadSettings();
+        loadDefaultSettings();
+    }
+
+    /**
+     * Temp function that loads the default settings
+     */
+    private void loadDefaultSettings()
+    {
+        name = "Jimmy";
+        message = "Needs help";
+        sendLocation = true;
+        phoneNumbers.add("+11234");
     }
 
     /**
@@ -68,7 +83,7 @@ public class SOS extends AppCompatActivity {
         final String SEND_LOCATION_PREF = "sendLocation";
         final String PHONE_NUMBER_PREF = "phoneNumbers";
 
-        SharedPreferences sp = getSharedPreferences(PREFERENCE_NAME, 0);
+        SharedPreferences sp = this.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
 
         //Begin settings variables
         name = sp.getString(USER_NAME_PREF, "Jim");
