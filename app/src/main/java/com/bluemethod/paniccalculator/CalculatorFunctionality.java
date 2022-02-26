@@ -86,11 +86,10 @@ public class CalculatorFunctionality{
     }
 
     public Double convString(String n){
-        if (n.isEmpty())
+        if (n.isEmpty()) {
             return 0.0;
-
-        Double dnum = Double.parseDouble(n);
-        return dnum;
+        }
+        return Double.parseDouble(n);
     }
 
     public Double estNeg(Boolean c, Double z){
@@ -102,8 +101,6 @@ public class CalculatorFunctionality{
     }
 
     public void addNum(Double i){
-        //setDisplay(getDisplay() + i);
-
         if(left==null){
             setLeft(i);
         }
@@ -113,11 +110,11 @@ public class CalculatorFunctionality{
         setDisplay(getDisplay() + " ");
     }
 
-    //Note to Dan: Ensure the operating sign is set as a String
+    //Note: Ensure the operating sign is set as a String
     public void addSign(String j){
         Double term = convString(tempString);
         if(numNeg = true){
-            term = estNeg(true, term);
+            term = estNeg(getNumNeg(), term);
         }
         addNum(term);
         setTempString("");
@@ -158,7 +155,7 @@ public class CalculatorFunctionality{
             case "%":
                 temp = (right*(left/100));
                 break;
-//Note to Dan: Make sure the symbol(√) is sent, rather than the square root method, unicode, or xml
+//Note: Make sure the symbol(√) is sent, rather than the square root method, unicode, or xml
             case "√":
                 temp = Math.sqrt(left);
                 break;
