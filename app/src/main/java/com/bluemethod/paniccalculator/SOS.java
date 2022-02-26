@@ -84,12 +84,14 @@ public class SOS extends AppCompatActivity {
     public void sendSMS()
     {
         //Construct the text message
-        String textMessage = "--THIS IS JUST A TEST--\n\n";
+        String textMessage = "--THIS IS JUST A TEST-- ";
 
-        textMessage = textMessage + name + " " + message;
+        textMessage = textMessage + message.replace("{name}", name) + " : ";
 
         if (sendLocation)
-            textMessage = textMessage + "\n\n" + coordinates.getLocation();
+            textMessage = textMessage + coordinates.getLocation();
+
+        System.out.println("Prepared Message\n-----------\n" + textMessage);
 
         //Sends the text message to contacts
         SmsManager smsManager = SmsManager.getDefault();
