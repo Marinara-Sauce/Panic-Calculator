@@ -79,7 +79,7 @@ public class SOS extends AppCompatActivity {
         sendLocation = sp.getBoolean(SEND_LOCATION_PREF, true);
 
         Set<String> num = new ArraySet<>();
-        num.add("+11234");
+        num.add("+14015730020");
 
         Set<String> numbers = sp.getStringSet(PHONE_NUMBER_PREF, num);
 

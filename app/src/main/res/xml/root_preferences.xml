@@ -1,0 +1,52 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/messages_header">
+
+        <EditTextPreference
+            app:key="name"
+            app:title="@string/name_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            app:defaultValue="{name} is in an unsafe situation, is unable to speak, and needs help. Below are their coordinates:"
+            app:key="custom_message"
+            app:title="@string/custom_message_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <SwitchPreferenceCompat
+            app:key="attach_coords"
+            app:title="@string/attach_coords" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/contacts_header">
+
+        <EditTextPreference
+            app:key="contact1"
+            app:title="@string/contact1"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            app:key="contact2"
+            app:title="@string/contact2"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            app:key="contact3"
+            app:title="@string/contact3"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            app:key="contact4"
+            app:title="@string/contact4"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            app:key="contact5"
+            app:title="@string/contact5"
+            app:useSimpleSummaryProvider="true" />
+
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

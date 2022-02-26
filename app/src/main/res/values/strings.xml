@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PanicCalculator</string>
+    <string name="app_name">Calculator</string>
     <string name="_1">1</string>
     <string name="_2">2</string>
     <string name="_3">3</string>
@@ -20,4 +20,23 @@
     <string name="squareRoot">√</string>
     <string name="decimal">.</string>
     <string name="negative">+/-</string>
+    <string name="title_activity_main_settings">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Alert Message</string>
+    <string name="contacts_header">Contacts</string>
+
+    <!-- Messages Preferences -->
+    <string name="name_title">Your Name</string>
+    <string name="custom_message_title">Custom Message</string>
+
+    <!-- Coordinate Preferences Preferences -->
+    <string name="attach_coords">Attach Coordinates to Message</string>
+
+    <!-- Emergency Contact Header -->
+    <string name="contact1">Emergency Contact 1</string>
+    <string name="contact2">Emergency Contact 2</string>
+    <string name="contact3">Emergency Contact 3</string>
+    <string name="contact4">Emergency Contact 4</string>
+    <string name="contact5">Emergency Contact 5</string>
 </resources>

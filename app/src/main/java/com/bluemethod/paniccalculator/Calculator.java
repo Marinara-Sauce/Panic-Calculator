@@ -1,5 +1,6 @@
 package com.bluemethod.paniccalculator;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -37,7 +38,8 @@ public class Calculator extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
 
-        //startSettingsActivity();
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         sos = new SOS(this.getApplicationContext());
 
@@ -160,6 +162,8 @@ public class Calculator extends AppCompatActivity {
         plusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (calculator.getDisplay().equals("1234")) startSettingsActivity();
+
                 calculator.addSign("+");
                 updateDisplay(equationDisplay, calculator);
             }
