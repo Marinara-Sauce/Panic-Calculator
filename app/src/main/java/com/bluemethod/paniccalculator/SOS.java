@@ -64,37 +64,21 @@ public class SOS extends AppCompatActivity {
      */
     private void loadSettings()
     {
-        final String PREFERENCE_NAME = "app-settings";
-
-        final String USER_NAME_PREF = "name";
-        final String MESSAGE_PREF = "message";
-        final String SEND_LOCATION_PREF = "sendLocation";
         final String PHONE_NUMBER_PREF = "phoneNumbers";
 
-        SharedPreferences sp = context.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(MainSettingsActivity.PREFERENCE_NAME, Context.MODE_PRIVATE);
 
         //Begin settings variables
-        name = sp.getString(USER_NAME_PREF, "Jim");
-        message = sp.getString(MESSAGE_PREF, "is in an unsafe situation and needs help");
-        sendLocation = sp.getBoolean(SEND_LOCATION_PREF, true);
+        name = sp.getString(MainSettingsActivity.USER_NAME_PREF, "Jim");
+        message = sp.getString(MainSettingsActivity.MESSAGE_PREF, "is in an unsafe situation and needs help");
+        sendLocation = sp.getBoolean(MainSettingsActivity.SEND_LOCATION_PREF, true);
 
-        Set<String> num = new ArraySet<>();
-        num.add("+14015730020");
-
-        Set<String> numbers = sp.getStringSet(PHONE_NUMBER_PREF, num);
-
-        if (name == null || message == null || numbers == null)
-        {
-            name = "Jimmy";
-            message = "needs healing";
-            //TODO: Run setup
-        }
-
-        //Parse the phone number array
-        //for (int i = 0 ; i < numbers.size() ; i++)
-        //     phoneNumbers.add((String) numbers.toArray()[i]);
-
-        phoneNumbers.add("+14015730020");
+        //Phone numbers
+        phoneNumbers.add(sp.getString(MainSettingsActivity.PHONE_NUMBER_PREF1, null));
+        phoneNumbers.add(sp.getString(MainSettingsActivity.PHONE_NUMBER_PREF2, null));
+        phoneNumbers.add(sp.getString(MainSettingsActivity.PHONE_NUMBER_PREF3, null));
+        phoneNumbers.add(sp.getString(MainSettingsActivity.PHONE_NUMBER_PREF4, null));
+        phoneNumbers.add(sp.getString(MainSettingsActivity.PHONE_NUMBER_PREF5, null));
     }
 
     public void sendSMS()
@@ -110,9 +94,15 @@ public class SOS extends AppCompatActivity {
         //Sends the text message to contacts
         SmsManager smsManager = SmsManager.getDefault();
         for (int i = 0 ; i < phoneNumbers.size() ; i++)
-            smsManager.sendTextMessage(phoneNumbers.get(i), null, textMessage, null, null);
+        {
+            if (phoneNumbers.get(i) != null)
+            {
+                System.out.println("Sending notification to: " + phoneNumbers.get(i));
+                smsManager.sendTextMessage(phoneNumbers.get(i), null, textMessage, null, null);
+            }
+        }
 
-        System.out.println("SOS Message dispatched");
+        System.out.println("SOS Message dispatched!");
     }
 
 }
