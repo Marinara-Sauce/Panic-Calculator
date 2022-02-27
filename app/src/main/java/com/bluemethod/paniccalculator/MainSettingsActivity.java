@@ -20,12 +20,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.ActionMenuItem;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.preference.EditTextPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 import androidx.preference.SwitchPreference;
 import androidx.preference.SwitchPreferenceCompat;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import java.security.Key;
 
@@ -63,6 +66,21 @@ public class MainSettingsActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
+        //Some brief settings to look out for
+        SharedPreferences sharedPreferences = this.getApplicationContext().getSharedPreferences(MainSettingsActivity.PREFERENCE_NAME, Context.MODE_PRIVATE);
+
+        String name = sharedPreferences.getString(USER_NAME_PREF, "NO_NAME_FOUND");
+        String number = sharedPreferences.getString(PHONE_NUMBER_PREF1, "NO_NUMBER_FOUND");
+
+        if (name.equals("NO_NAME_FOUND") || number.equals("NO_NUMBER_FOUND") || name.length() <= 1 || number.length() <= 1)
+        {
+            View view = findViewById(android.R.id.content);
+            Snackbar.make(view, "Ensure that Name and Emergency Contact 1 are set to continue",
+                    Snackbar.LENGTH_LONG).show();
+
+            return false;
+        }
+
         Intent intent = new Intent(this, Calculator.class);
         startActivity(intent);
         return false;
@@ -240,7 +258,6 @@ public class MainSettingsActivity extends AppCompatActivity {
         private void modifyPreference(String key, String value)
         {
             System.out.print("Writing " + value + " to " + key + "...");
-            //SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
             SharedPreferences sharedPreferences = getContext().getSharedPreferences(MainSettingsActivity.PREFERENCE_NAME, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString(key, value);
