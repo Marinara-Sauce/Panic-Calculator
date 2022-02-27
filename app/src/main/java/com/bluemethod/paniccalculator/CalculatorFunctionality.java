@@ -92,10 +92,11 @@ public class CalculatorFunctionality{
         return Double.parseDouble(n);
     }
 
-    public Double estNeg(Boolean c, Double z){
+    public Double estNeg(Boolean c, Double z) {
         Double y = z;
-        if (c = true){
-            y = y*-1;
+        if (c = true) {
+            y = y * -1;
+            setNumNeg(false);
         }
         return y;
     }
