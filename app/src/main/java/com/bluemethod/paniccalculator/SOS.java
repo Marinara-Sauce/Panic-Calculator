@@ -112,16 +112,21 @@ public class SOS extends AppCompatActivity {
         {
             if (phoneNumbers.get(i) != null)
             {
+                String text = TEST_MESSAGE + name + message;
+
+                System.out.println("Sending notification to: " + phoneNumbers.get(i));
+                System.out.println("Text: " + text);
+                smsManager.sendTextMessage(phoneNumbers.get(i), null,
+                        text, null, null);
+
                 if (sendLocation)
                 {
-                    System.out.println("Sending notification to: " + phoneNumbers.get(i));
+                    String location = coordinates.getLocation();
                     smsManager.sendTextMessage(phoneNumbers.get(i), null,
-                            TEST_MESSAGE + name + message + coordinates.getLocation(), null, null);
+                            name + "'s Coordinates: " + location, null, null);
                 }
-                else
-                    System.out.println("Sending notification to: " + phoneNumbers.get(i));
-                    smsManager.sendTextMessage(phoneNumbers.get(i), null,
-                            TEST_MESSAGE + name + message, null, null);
+
+
             }
         }
 
