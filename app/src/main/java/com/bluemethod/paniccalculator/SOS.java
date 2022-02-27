@@ -74,7 +74,7 @@ public class SOS extends AppCompatActivity {
 
         //Begin settings variables
         name = sp.getString(MainSettingsActivity.USER_NAME_PREF, "Jim");
-        message = sp.getString(MainSettingsActivity.MESSAGE_PREF, "{name} is in an unsafe situation, is unable to speak, and needs help. These are their coordinates:");
+        message = sp.getString(MainSettingsActivity.MESSAGE_PREF, " is in an unsafe situation, is unable to speak, and needs help. These are their coordinates:");
         sendLocation = sp.getBoolean(MainSettingsActivity.SEND_LOCATION_PREF, true);
 
         phoneNumbers.clear();

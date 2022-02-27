@@ -50,12 +50,17 @@ public class Calculator extends AppCompatActivity {
         assert actionBar != null;
         actionBar.hide();
 
+        boolean firstBoot = false;
+
         //Confirm that we have proper permissions so we don't crash
-        if (this.getApplicationContext().checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != PackageManager.PERMISSION_GRANTED
-            || this.getApplicationContext().checkSelfPermission("android.permission.ACCESS_COARSE_LOCATION") != PackageManager.PERMISSION_GRANTED)
+        while (missingPermission())
         {
+            firstBoot = true;
             this.requestPermissions(permissions, 44);
         }
+
+        if (firstBoot)
+            startSettingsActivity();
 
         sos = new SOS(this.getApplicationContext());
 
@@ -263,6 +268,13 @@ public class Calculator extends AppCompatActivity {
                 updateDisplay(equationDisplay, calculator);
             }
         });
+    }
+
+    private boolean missingPermission()
+    {
+        return this.getApplicationContext().checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != PackageManager.PERMISSION_GRANTED
+                || this.getApplicationContext().checkSelfPermission("android.permission.ACCESS_COARSE_LOCATION") != PackageManager.PERMISSION_GRANTED
+                || this.getApplicationContext().checkSelfPermission("android.permission.SEND_SMS") != PackageManager.PERMISSION_GRANTED;
     }
 
     private void startSettingsActivity()
