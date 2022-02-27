@@ -169,6 +169,7 @@ public class Calculator extends AppCompatActivity {
 
         negativeButton.setOnClickListener(view -> {
             calculator.setNumNeg(true);
+            calculator.setDisplay(calculator.getDisplay() + "-");
             updateDisplay(equationDisplay, calculator);
         });
 
