@@ -121,8 +121,7 @@ public class SOS extends AppCompatActivity {
             {
                 System.out.println("Sending notification to: " + phoneNumbers.get(i));
                 smsManager.sendTextMessage(phoneNumbers.get(i), null,
-                        "--THIS IS JUST A TEST--" + message.replace("{name}", name),
-                        null, null);
+                        textMessage, null, null);
             }
         }
 
