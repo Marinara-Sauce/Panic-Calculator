@@ -94,6 +94,7 @@ public class Calculator extends AppCompatActivity {
         Button negativeButton = findViewById(R.id.bNegativeButton);
         Button sqrtButton = findViewById(R.id.nSquareRootButton);
         Button percentButton = findViewById(R.id.bPercentButton);
+        Button decimalButton = findViewById(R.id.nDecimalButton);
 
         //Clear Button
         Button clearButton = findViewById(R.id.bClearButton);
@@ -218,6 +219,14 @@ public class Calculator extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 calculator.setNumNeg(true);
+                updateDisplay(equationDisplay, calculator);
+            }
+        });
+
+        decimalButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calculator.addtoString(".");
                 updateDisplay(equationDisplay, calculator);
             }
         });
