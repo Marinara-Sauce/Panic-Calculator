@@ -24,7 +24,7 @@
             app:useSimpleSummaryProvider="true" />
 
         <EditTextPreference
-            app:defaultValue="{name} is in an unsafe situation, is unable to speak, and needs help. Below are their coordinates:"
+            app:defaultValue="{name} is in an unsafe situation, is unable to speak, and needs help. These are their coordinates:"
             app:key="custom_message"
             app:title="@string/custom_message_title"
             app:useSimpleSummaryProvider="true" />

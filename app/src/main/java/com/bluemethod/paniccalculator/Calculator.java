@@ -3,9 +3,11 @@ package com.bluemethod.paniccalculator;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,13 +35,27 @@ public class Calculator extends AppCompatActivity {
     //SOS Class
     private SOS sos;
 
+    //Permissions Required
+    private final String[] permissions = {"android.permission.ACCESS_FINE_LOCATION",
+            "android.permission.ACCESS_FINE_LOCATION",
+            "android.permission.INTERNET",
+            "android.permission.SEND_SMS"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
 
         ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
         actionBar.hide();
+
+        //Confirm that we have proper permissions so we don't crash
+        if (this.getApplicationContext().checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != PackageManager.PERMISSION_GRANTED
+            || this.getApplicationContext().checkSelfPermission("android.permission.ACCESS_COARSE_LOCATION") != PackageManager.PERMISSION_GRANTED)
+        {
+            this.requestPermissions(permissions, 44);
+        }
 
         sos = new SOS(this.getApplicationContext());
 
@@ -48,7 +64,7 @@ public class Calculator extends AppCompatActivity {
         //Begin collecting scene information and init-ing variables
 
         //The text display at the top of the calculator
-        TextView equationDisplay = (TextView) findViewById(R.id.equationDisplay);
+        TextView equationDisplay = findViewById(R.id.equationDisplay);
 
         //The number buttons
         Button oneButton = findViewById(R.id.bOneButton);
