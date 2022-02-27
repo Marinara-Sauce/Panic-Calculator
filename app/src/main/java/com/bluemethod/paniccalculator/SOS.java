@@ -104,14 +104,7 @@ public class SOS extends AppCompatActivity {
         }
 
         //Construct the text message
-        String textMessage = "--THIS IS JUST A TEST-- ";
-
-        textMessage = textMessage + message.replace("{name}", name) + " : ";
-
-        if (sendLocation)
-            textMessage = textMessage + coordinates.getLocation();
-
-        System.out.println("Prepared Message\n-----------\n" + textMessage);
+        String TEST_MESSAGE = "--THIS IS JUST A TEST-- ";
 
         //Sends the text message to contacts
         SmsManager smsManager = SmsManager.getDefault();
@@ -119,9 +112,16 @@ public class SOS extends AppCompatActivity {
         {
             if (phoneNumbers.get(i) != null)
             {
-                System.out.println("Sending notification to: " + phoneNumbers.get(i));
-                smsManager.sendTextMessage(phoneNumbers.get(i), null,
-                        textMessage, null, null);
+                if (sendLocation)
+                {
+                    System.out.println("Sending notification to: " + phoneNumbers.get(i));
+                    smsManager.sendTextMessage(phoneNumbers.get(i), null,
+                            TEST_MESSAGE + name + message + coordinates.getLocation(), null, null);
+                }
+                else
+                    System.out.println("Sending notification to: " + phoneNumbers.get(i));
+                    smsManager.sendTextMessage(phoneNumbers.get(i), null,
+                            TEST_MESSAGE + name + message, null, null);
             }
         }
 
