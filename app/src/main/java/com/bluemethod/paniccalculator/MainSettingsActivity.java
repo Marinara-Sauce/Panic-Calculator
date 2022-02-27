@@ -4,33 +4,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.renderscript.ScriptGroup;
 import android.text.InputType;
-import android.text.Layout;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.menu.ActionMenuItem;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.preference.EditTextPreference;
-import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
-import androidx.preference.SwitchPreference;
 import androidx.preference.SwitchPreferenceCompat;
 
 import com.google.android.material.snackbar.Snackbar;
-
-import java.security.Key;
 
 public class MainSettingsActivity extends AppCompatActivity {
 
@@ -94,162 +82,97 @@ public class MainSettingsActivity extends AppCompatActivity {
         }
 
         @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             View view = super.onCreateView(inflater, container, savedInstanceState);
 
-            EditTextPreference name = (EditTextPreference) findPreference("name");
+            EditTextPreference name = findPreference("name");
             assert name != null;
-            name.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    modifyPreference(MainSettingsActivity.USER_NAME_PREF, (String) newValue);
-                    return true;
-                }
+            name.setOnPreferenceChangeListener((preference, newValue) -> {
+                modifyPreference(MainSettingsActivity.USER_NAME_PREF, (String) newValue);
+                return true;
             });
 
-            EditTextPreference message = (EditTextPreference) findPreference("custom_message");
+            EditTextPreference message = findPreference("custom_message");
             assert message != null;
-            message.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    String message = (String) newValue;
-                    if (message.isEmpty()) message = "{name} is in an unsafe situation, is unable to speak, and needs help. Coordinates are:";
+            message.setOnPreferenceChangeListener((preference, newValue) -> {
+                String message1 = (String) newValue;
+                if (message1.isEmpty()) message1 = "{name} is in an unsafe situation, is unable to speak, and needs help. Coordinates are:";
 
-                    modifyPreference(MainSettingsActivity.MESSAGE_PREF, (String) message);
-                    return true;
-                }
+                modifyPreference(MainSettingsActivity.MESSAGE_PREF, message1);
+                return true;
             });
 
-            SwitchPreferenceCompat location = (SwitchPreferenceCompat) findPreference("attach_coords");
+            SwitchPreferenceCompat location = findPreference("attach_coords");
             assert location != null;
-            location.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    modifyPreference(MainSettingsActivity.SEND_LOCATION_PREF, (boolean) newValue);
-                    return true;
-                }
+            location.setOnPreferenceChangeListener((preference, newValue) -> {
+                modifyPreference(MainSettingsActivity.SEND_LOCATION_PREF, (boolean) newValue);
+                return true;
             });
 
             // -- Add phone numbers -- //
 
-            EditTextPreference number1 = (EditTextPreference) findPreference("contact1");
+            EditTextPreference number1 = findPreference("contact1");
             assert number1 != null;
-            number1.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    modifyPreference(MainSettingsActivity.PHONE_NUMBER_PREF1, (String) newValue);
-                    return true;
-                }
+            number1.setOnPreferenceChangeListener((preference, newValue) -> {
+                modifyPreference(MainSettingsActivity.PHONE_NUMBER_PREF1, (String) newValue);
+                return true;
             });
 
-            number1.setOnBindEditTextListener(new EditTextPreference.OnBindEditTextListener() {
-                @Override
-                public void onBindEditText(@NonNull EditText editText) {
-                    editText.setInputType(InputType.TYPE_CLASS_PHONE);
-                }
-            });
+            number1.setOnBindEditTextListener(editText -> editText.setInputType(InputType.TYPE_CLASS_PHONE));
 
-            EditTextPreference number2 = (EditTextPreference) findPreference("contact2");
+            EditTextPreference number2 = findPreference("contact2");
             assert number2 != null;
-            number2.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    modifyPreference(MainSettingsActivity.PHONE_NUMBER_PREF2, (String) newValue);
-                    return true;
-                }
+            number2.setOnPreferenceChangeListener((preference, newValue) -> {
+                modifyPreference(MainSettingsActivity.PHONE_NUMBER_PREF2, (String) newValue);
+                return true;
             });
 
-            number2.setOnBindEditTextListener(new EditTextPreference.OnBindEditTextListener() {
-                @Override
-                public void onBindEditText(@NonNull EditText editText) {
-                    editText.setInputType(InputType.TYPE_CLASS_PHONE);
-                }
-            });
+            number2.setOnBindEditTextListener(editText -> editText.setInputType(InputType.TYPE_CLASS_PHONE));
 
-            EditTextPreference number3 = (EditTextPreference) findPreference("contact3");
+            EditTextPreference number3 = findPreference("contact3");
             assert number3 != null;
-            number3.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    modifyPreference(MainSettingsActivity.PHONE_NUMBER_PREF3, (String) newValue);
-                    return true;
-                }
+            number3.setOnPreferenceChangeListener((preference, newValue) -> {
+                modifyPreference(MainSettingsActivity.PHONE_NUMBER_PREF3, (String) newValue);
+                return true;
             });
 
-            number3.setOnBindEditTextListener(new EditTextPreference.OnBindEditTextListener() {
-                @Override
-                public void onBindEditText(@NonNull EditText editText) {
-                    editText.setInputType(InputType.TYPE_CLASS_PHONE);
-                }
-            });
+            number3.setOnBindEditTextListener(editText -> editText.setInputType(InputType.TYPE_CLASS_PHONE));
 
-            EditTextPreference number4 = (EditTextPreference) findPreference("contact4");
+            EditTextPreference number4 = findPreference("contact4");
             assert number4 != null;
-            number4.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    modifyPreference(MainSettingsActivity.PHONE_NUMBER_PREF4, (String) newValue);
-                    return true;
-                }
+            number4.setOnPreferenceChangeListener((preference, newValue) -> {
+                modifyPreference(MainSettingsActivity.PHONE_NUMBER_PREF4, (String) newValue);
+                return true;
             });
 
-            number4.setOnBindEditTextListener(new EditTextPreference.OnBindEditTextListener() {
-                @Override
-                public void onBindEditText(@NonNull EditText editText) {
-                    editText.setInputType(InputType.TYPE_CLASS_PHONE);
-                }
-            });
+            number4.setOnBindEditTextListener(editText -> editText.setInputType(InputType.TYPE_CLASS_PHONE));
 
-            EditTextPreference number5 = (EditTextPreference) findPreference("contact5");
+            EditTextPreference number5 = findPreference("contact5");
             assert number5 != null;
-            number5.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    modifyPreference(MainSettingsActivity.PHONE_NUMBER_PREF5, (String) newValue);
-                    return true;
-                }
+            number5.setOnPreferenceChangeListener((preference, newValue) -> {
+                modifyPreference(MainSettingsActivity.PHONE_NUMBER_PREF5, (String) newValue);
+                return true;
             });
 
-            number5.setOnBindEditTextListener(new EditTextPreference.OnBindEditTextListener() {
-                @Override
-                public void onBindEditText(@NonNull EditText editText) {
-                    editText.setInputType(InputType.TYPE_CLASS_PHONE);
-                }
-            });
+            number5.setOnBindEditTextListener(editText -> editText.setInputType(InputType.TYPE_CLASS_PHONE));
 
-            EditTextPreference sosCode = (EditTextPreference) findPreference("sos_code");
+            EditTextPreference sosCode = findPreference("sos_code");
             assert sosCode != null;
-            sosCode.setOnBindEditTextListener(new EditTextPreference.OnBindEditTextListener() {
-                @Override
-                public void onBindEditText(@NonNull EditText editText) {
-                    editText.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_SIGNED);
-                }
+            sosCode.setOnBindEditTextListener(editText -> editText.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_SIGNED));
+
+            sosCode.setOnPreferenceChangeListener((preference, newValue) -> {
+                modifyPreference(MainSettingsActivity.SOS_CODE_PREF, (String) newValue);
+                return true;
             });
 
-            sosCode.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    modifyPreference(MainSettingsActivity.SOS_CODE_PREF, (String) newValue);
-                    return true;
-                }
-            });
-
-            EditTextPreference settingsCode = (EditTextPreference) findPreference("settings_code");
+            EditTextPreference settingsCode = findPreference("settings_code");
             assert settingsCode != null;
-            settingsCode.setOnBindEditTextListener(new EditTextPreference.OnBindEditTextListener() {
-                @Override
-                public void onBindEditText(@NonNull EditText editText) {
-                    editText.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_SIGNED);
-                }
-            });
+            settingsCode.setOnBindEditTextListener(editText -> editText.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_SIGNED));
 
-            settingsCode.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    modifyPreference(MainSettingsActivity.SETTINGS_CODE_PREF, (String) newValue);
-                    return true;
-                }
+            settingsCode.setOnPreferenceChangeListener((preference, newValue) -> {
+                modifyPreference(MainSettingsActivity.SETTINGS_CODE_PREF, (String) newValue);
+                return true;
             });
 
             return view;

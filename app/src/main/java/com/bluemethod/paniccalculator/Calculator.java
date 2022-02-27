@@ -3,17 +3,11 @@ package com.bluemethod.paniccalculator;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -101,181 +95,121 @@ public class Calculator extends AppCompatActivity {
 
         //---- ON CLICK LISTENERS ----//
 
-        oneButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                calculator.addtoString(1);
+        oneButton.setOnClickListener(view -> {
+            calculator.addtoString(1);
+            updateDisplay(equationDisplay, calculator);
+        });
+
+        twoButton.setOnClickListener(view -> {
+            calculator.addtoString(2);
+            updateDisplay(equationDisplay, calculator);
+        });
+
+        threeButton.setOnClickListener(view -> {
+            calculator.addtoString(3);
+            updateDisplay(equationDisplay, calculator);
+        });
+
+        fourButton.setOnClickListener(view -> {
+            calculator.addtoString(4);
+            updateDisplay(equationDisplay, calculator);
+        });
+
+        fiveButton.setOnClickListener(view -> {
+            calculator.addtoString(5);
+            updateDisplay(equationDisplay, calculator);
+        });
+
+        sixButton.setOnClickListener(view -> {
+            calculator.addtoString(6);
+            updateDisplay(equationDisplay, calculator);
+        });
+
+        sevenButton.setOnClickListener(view -> {
+            calculator.addtoString(7);
+            updateDisplay(equationDisplay, calculator);
+        });
+
+        eightButton.setOnClickListener(view -> {
+            calculator.addtoString(8);
+            updateDisplay(equationDisplay, calculator);
+        });
+
+        nineButton.setOnClickListener(view -> {
+            calculator.addtoString(9);
+            updateDisplay(equationDisplay, calculator);
+        });
+
+        zeroButton.setOnClickListener(view -> {
+            calculator.addtoString(0);
+            updateDisplay(equationDisplay, calculator);
+        });
+
+        plusButton.setOnClickListener(view -> {
+            if (calculator.getDisplay().equals(sos.getSettingsCode())) startSettingsActivity();
+
+            calculator.addSign("+");
+            updateDisplay(equationDisplay, calculator);
+        });
+
+        minusButton.setOnClickListener(view -> {
+            calculator.addSign("-");
+            updateDisplay(equationDisplay, calculator);
+        });
+
+        timesButton.setOnClickListener(view -> {
+            calculator.addSign("*");
+            updateDisplay(equationDisplay, calculator);
+        });
+
+        divideButton.setOnClickListener(view -> {
+            calculator.addSign("/");
+            updateDisplay(equationDisplay, calculator);
+        });
+
+        negativeButton.setOnClickListener(view -> {
+            calculator.setNumNeg(true);
+            updateDisplay(equationDisplay, calculator);
+        });
+
+        decimalButton.setOnClickListener(view -> {
+            calculator.addtoString(".");
+            updateDisplay(equationDisplay, calculator);
+        });
+
+        sqrtButton.setOnClickListener(view -> {
+            calculator.addSign("√");
+            updateDisplay(equationDisplay, calculator);
+        });
+
+        percentButton.setOnClickListener(view -> {
+            calculator.addSign("%");
+            updateDisplay(equationDisplay, calculator);
+        });
+
+        equalsButton.setOnClickListener(view -> {
+            //Not only should this solve, but we should also check for double presses
+            //and dispatch the SOS
+
+            if (equalsTapped)
+                sendSOS(calculator.getDisplay());
+
+            equalsTapped = true;
+
+            //Deactivates the equals primer after .25 seconds
+            equalsTimer = new Timer();
+            equalsTimer.schedule(new EqualsToggle(), 250);
+
+            if (!calculator.getDisplay().equals(sos.getSOSCode()))
+            {
+                calculator.addSign("=");
                 updateDisplay(equationDisplay, calculator);
             }
         });
 
-        twoButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                calculator.addtoString(2);
-                updateDisplay(equationDisplay, calculator);
-            }
-        });
-
-        threeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                calculator.addtoString(3);
-                updateDisplay(equationDisplay, calculator);
-            }
-        });
-
-        fourButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                calculator.addtoString(4);
-                updateDisplay(equationDisplay, calculator);
-            }
-        });
-
-        fiveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                calculator.addtoString(5);
-                updateDisplay(equationDisplay, calculator);
-            }
-        });
-
-        sixButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                calculator.addtoString(6);
-                updateDisplay(equationDisplay, calculator);
-            }
-        });
-
-        sevenButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                calculator.addtoString(7);
-                updateDisplay(equationDisplay, calculator);
-            }
-        });
-
-        eightButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                calculator.addtoString(8);
-                updateDisplay(equationDisplay, calculator);
-            }
-        });
-
-        nineButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                calculator.addtoString(9);
-                updateDisplay(equationDisplay, calculator);
-            }
-        });
-
-        zeroButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                calculator.addtoString(0);
-                updateDisplay(equationDisplay, calculator);
-            }
-        });
-
-        plusButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (calculator.getDisplay().equals(sos.getSettingsCode())) startSettingsActivity();
-
-                calculator.addSign("+");
-                updateDisplay(equationDisplay, calculator);
-            }
-        });
-
-        minusButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                calculator.addSign("-");
-                updateDisplay(equationDisplay, calculator);
-            }
-        });
-
-        timesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                calculator.addSign("*");
-                updateDisplay(equationDisplay, calculator);
-            }
-        });
-
-        divideButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                calculator.addSign("/");
-                updateDisplay(equationDisplay, calculator);
-            }
-        });
-
-        negativeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                calculator.setNumNeg(true);
-                updateDisplay(equationDisplay, calculator);
-            }
-        });
-
-        decimalButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                calculator.addtoString(".");
-                updateDisplay(equationDisplay, calculator);
-            }
-        });
-
-        sqrtButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                calculator.addSign("√");
-                updateDisplay(equationDisplay, calculator);
-            }
-        });
-
-        percentButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                calculator.addSign("%");
-                updateDisplay(equationDisplay, calculator);
-            }
-        });
-
-        equalsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Not only should this solve, but we should also check for double presses
-                //and dispatch the SOS
-
-                if (equalsTapped)
-                    sendSOS(view, calculator.getDisplay());
-
-                equalsTapped = true;
-
-                //Deactivates the equals primer after .25 seconds
-                equalsTimer = new Timer();
-                equalsTimer.schedule(new EqualsToggle(), 250);
-
-                if (!calculator.getDisplay().equals(sos.getSOSCode()))
-                {
-                    calculator.addSign("=");
-                    updateDisplay(equationDisplay, calculator);
-                }
-            }
-        });
-
-        clearButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                calculator.clearButton();
-                updateDisplay(equationDisplay, calculator);
-            }
+        clearButton.setOnClickListener(view -> {
+            calculator.clearButton();
+            updateDisplay(equationDisplay, calculator);
         });
     }
 
@@ -319,7 +253,7 @@ public class Calculator extends AppCompatActivity {
      *
      * @param code the current entered code
      */
-    private void sendSOS(View view, String code)
+    private void sendSOS(String code)
     {
         sos.sendSMS(code);
     }
