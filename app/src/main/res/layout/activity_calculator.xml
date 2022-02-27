@@ -40,11 +40,13 @@
                 android:layout_height="80dp"
                 android:background="@drawable/button_background"
 
+                android:elevation="0dp"
                 android:text="@string/clear"
                 android:textColor="#FF6868"
                 android:textSize="30sp"
                 android:translationX="-15dp"
-                tools:ignore="TextContrastCheck,TextContrastCheck" />
+                tools:ignore="TextContrastCheck,TextContrastCheck"
+                style="?android:attr/borderlessButtonStyle"/>
 
             <androidx.appcompat.widget.AppCompatButton
 
@@ -58,7 +60,8 @@
                 android:textColor="#66AA22"
                 android:textSize="30sp"
                 android:translationX="-5dp"
-                tools:ignore="TextContrastCheck,TextContrastCheck" />
+                tools:ignore="TextContrastCheck,TextContrastCheck"
+                style="?android:attr/borderlessButtonStyle"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bPercentButton"
@@ -71,7 +74,8 @@
                 android:textColor="#66AA22"
                 android:textSize="30sp"
                 android:translationX="5dp"
-                tools:ignore="TextContrastCheck,TextContrastCheck" />
+                tools:ignore="TextContrastCheck,TextContrastCheck"
+                style="?android:attr/borderlessButtonStyle"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bDivideButton"
@@ -83,7 +87,8 @@
                 android:textColor="#66AA22"
                 android:textSize="30sp"
                 android:translationX="15dp"
-                tools:ignore="TextContrastCheck" />
+                tools:ignore="TextContrastCheck"
+                style="?android:attr/borderlessButtonStyle"/>
 
 
         </TableRow>
@@ -114,7 +119,8 @@
                 android:text="@string/_7"
                 android:textColor="#686868"
                 android:textSize="30sp"
-                android:translationX="-15dp" />
+                android:translationX="-15dp"
+                style="?android:attr/borderlessButtonStyle"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bEightButton"
@@ -125,7 +131,8 @@
                 android:text="@string/_8"
                 android:textColor="#686868"
                 android:textSize="30sp"
-                android:translationX="-5dp" />
+                android:translationX="-5dp"
+                style="?android:attr/borderlessButtonStyle"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bNineButton"
@@ -136,7 +143,8 @@
                 android:text="@string/_9"
                 android:textColor="#686868"
                 android:textSize="30sp"
-                android:translationX="5dp" />
+                android:translationX="5dp"
+                style="?android:attr/borderlessButtonStyle"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bTimesButton"
@@ -149,7 +157,8 @@
                 android:textColor="#66AA22"
                 android:textSize="30sp"
                 android:translationX="15dp"
-                tools:ignore="TextContrastCheck" />
+                tools:ignore="TextContrastCheck"
+                style="?android:attr/borderlessButtonStyle"/>
 
         </TableRow>
 
@@ -179,7 +188,8 @@
                 android:text="@string/_4"
                 android:textColor="#686868"
                 android:textSize="30sp"
-                android:translationX="-15dp" />
+                android:translationX="-15dp"
+                style="?android:attr/borderlessButtonStyle"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bFiveButton"
@@ -190,7 +200,8 @@
                 android:text="@string/_5"
                 android:textColor="#686868"
                 android:textSize="30sp"
-                android:translationX="-5dp" />
+                android:translationX="-5dp"
+                style="?android:attr/borderlessButtonStyle"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bSixButton"
@@ -201,7 +212,8 @@
                 android:text="@string/_6"
                 android:textColor="#686868"
                 android:textSize="30sp"
-                android:translationX="5dp" />
+                android:translationX="5dp"
+                style="?android:attr/borderlessButtonStyle"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bMinusButton"
@@ -213,7 +225,8 @@
                 android:textColor="#66AA22"
                 android:textSize="30sp"
                 android:translationX="15dp"
-                tools:ignore="TextContrastCheck" />
+                tools:ignore="TextContrastCheck"
+                style="?android:attr/borderlessButtonStyle"/>
 
         </TableRow>
 
@@ -246,7 +259,8 @@
                 android:text="@string/_1"
                 android:textColor="#686868"
                 android:textSize="30sp"
-                android:translationX="-15dp" />
+                android:translationX="-15dp"
+                style="?android:attr/borderlessButtonStyle"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bTwoButton"
@@ -257,7 +271,8 @@
                 android:text="@string/_2"
                 android:textColor="#686868"
                 android:textSize="30sp"
-                android:translationX="-5dp" />
+                android:translationX="-5dp"
+                style="?android:attr/borderlessButtonStyle"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bThreeButton"
@@ -268,7 +283,8 @@
                 android:text="@string/_3"
                 android:textColor="#686868"
                 android:textSize="30sp"
-                android:translationX="5dp" />
+                android:translationX="5dp"
+                style="?android:attr/borderlessButtonStyle"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bPlusButton"
@@ -280,7 +296,8 @@
                 android:textColor="#66AA22"
                 android:textSize="30sp"
                 android:translationX="15dp"
-                tools:ignore="TextContrastCheck" />
+                tools:ignore="TextContrastCheck"
+                style="?android:attr/borderlessButtonStyle"/>
 
 
         </TableRow>
@@ -295,7 +312,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                tools:layout_editor_absoluteX="1dp" />
+                tools:layout_editor_absoluteX="1dp"
+                style="?android:attr/borderlessButtonStyle"/>
         </TableRow>
 
         <TableRow
@@ -316,7 +334,8 @@
                 android:text="@string/negative"
                 android:textColor="#686868"
                 android:textSize="30sp"
-                android:translationX="-15dp" />
+                android:translationX="-15dp"
+                style="?android:attr/borderlessButtonStyle"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bZeroButton"
@@ -327,7 +346,8 @@
                 android:text="@string/_0"
                 android:textColor="#686868"
                 android:textSize="30sp"
-                android:translationX="-5dp" />
+                android:translationX="-5dp"
+                style="?android:attr/borderlessButtonStyle"/>
 
             <androidx.appcompat.widget.AppCompatButton
 
@@ -341,7 +361,8 @@
                 android:textColor="#686868"
                 android:textSize="30sp"
                 android:translationX="5dp"
-                tools:ignore="TextContrastCheck" />
+                tools:ignore="TextContrastCheck"
+                style="?android:attr/borderlessButtonStyle"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bEqualsButton"
@@ -353,7 +374,8 @@
                 android:textColor="#EEEEEE"
                 android:textSize="30sp"
                 android:translationX="15dp"
-                tools:ignore="TextContrastCheck" />
+                tools:ignore="TextContrastCheck"
+                style="?android:attr/borderlessButtonStyle"/>
 
 
         </TableRow>
