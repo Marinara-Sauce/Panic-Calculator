@@ -158,6 +158,8 @@ public class CalculatorFunctionality{
 //Note: Make sure the symbol(√) is sent, rather than the square root method, unicode, or xml
             case "√":
                 temp = Math.sqrt(right);
+                int autreTemp = (int)(temp*10000.0); //Truncates temp to four decimal places
+                temp = ((double)autreTemp)/10000.0;
                 break;
 
             default:
