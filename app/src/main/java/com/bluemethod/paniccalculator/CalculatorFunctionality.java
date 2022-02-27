@@ -158,15 +158,19 @@ public class CalculatorFunctionality{
 //Note: Make sure the symbol(√) is sent, rather than the square root method, unicode, or xml
             case "√":
                 temp = Math.sqrt(right);
-                int autreTemp = (int)(temp*10000.0); //Truncates temp to four decimal places
-                temp = ((double)autreTemp)/10000.0;
                 break;
 
             default:
                 temp = left;
 //-0.0 error occurs after switch
         }
-        setDisplay((temp) + "");
+        int autreTemp = (int)(temp*10000.0); //Truncates temp to four decimal places
+        temp = ((double)autreTemp)/10000.0;
+        String tempString = temp + "";
+        if(temp % 1 == 0){
+            tempString = tempString.substring(0, tempString.length() - 2);
+        }
+        setDisplay(tempString);
         setLeft(temp);
         setRight(null);
         setSign("");
