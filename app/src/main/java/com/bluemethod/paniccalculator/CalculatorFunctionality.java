@@ -113,7 +113,7 @@ public class CalculatorFunctionality{
     //Note: Ensure the operating sign is set as a String
     public void addSign(String j){
         Double term = convString(tempString);
-        if(numNeg = true){
+        if(numNeg){
             term = estNeg(getNumNeg(), term);
         }
         addNum(term);
@@ -157,10 +157,14 @@ public class CalculatorFunctionality{
                 break;
 //Note: Make sure the symbol(√) is sent, rather than the square root method, unicode, or xml
             case "√":
-                temp = Math.sqrt(left);
+                temp = Math.sqrt(right);
                 break;
+
+            default:
+                temp = left;
+//-0.0 error occurs after switch
         }
-        setDisplay(temp + "");
+        setDisplay((temp) + "");
         setLeft(temp);
         setRight(null);
         setSign("");
